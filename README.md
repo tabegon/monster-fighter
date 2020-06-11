@@ -1,12 +1,12 @@
-# monster-fighter
+# Monster-fighter
 
-# C'est quoi monster-fighter
-C'est un jeu ou tu combat des monstres pour monter d'étages en étages il faut que tu batte des monstres en utilisant des objets à la boutique en attaquant tout simplement et faisant une attaque spécial etc.
+## C'est quoi monster-fighter ?
+C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut que tu battes des monstres, en utilisant des objets achetés à la boutique, en attaquant tout simplement, en faisant une attaque spécial etc.
 
-## Pour jouer
+## Pour commencer
 Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 
-### Commandes
-je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà
+## Commandes
+Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà
 
 Developpé par Théo Abegon
