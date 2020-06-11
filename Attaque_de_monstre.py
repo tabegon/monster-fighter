@@ -27,6 +27,7 @@ regagne_vie = 9
 rénitialiser_AttackToi = 9 
 Attack_Toi = 10
 Attack_Boss = 15
+boss_final = 0
 Attack_spéciale = 2
 Étages = 1
 
@@ -92,6 +93,10 @@ while boss > 0 and joueur > 0 :
         Attack_Toi = rénitialiser_AttackToi + 10
         joueur = rénitialiser_AttackToi + 21
         Étages = Étages + 1
+        if Étages == 20 :
+            print ('Vous avez fini')
+            print ('Maintenant contre le boss final mais juste avant un petit moment de plisir')
+            boss_final = "oui"
         print (f"\033[32mTu as gagné:] maintenant tu est à l'étage n°{Étages}\033[0m")
         Argent = Argent + randint(0, 30)
         choix = input (f"\033[32mTu as {Argent}€ tape 1 si tu veux continuer l'aventure, ou si tu veux regarder la boutique tape 2\033[0m")
@@ -122,4 +127,62 @@ while boss > 0 and joueur > 0 :
             Étages = 1
         print(f"\033[36mTu as perdu vous descendez d'un étage dommage :[ maintenant tu est à l'étage n°{Étages}\033[0m")
 
+    if boss_final == "oui" :
+        boss = 500
+        Attack_Boss = 25
+        while boss_final == "oui" :
+            print(f"\033[31mTu as {joueur} vies et le boss en a {boss}.\033[0m")
+            print ("\033[32m·\033[0m")
+            action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
+            #Ton attaque
+            if action == "1" :
+                attack = randint(0, Attack_Toi)
+                coup_critique = randint(0, 1)
+                if coup_critique == 1 :
+                    attack = attack + 20
+                    print ("\033[33mVous avez donner un coup critique\033[0m")
+                print (f'Vous avez attaqué de {attack}')
+                boss = boss - attack
+                print (f'Le boss lui reste {boss} vies')
+            if action == "2" :
+                vies = randint(0, Attack_Toi)
+                print (f'Vous avez regagné {vies} de vies')
+                joueur = joueur + vies
+            if action == "3" :
+                esquive = randint(0, 1)
+                if esquive == 0 :
+                    print ("\033[33mvous avez esquivé le coup\033[0m")
+                    après = 1
+            if action == "4" :
+                if Attack_spéciale == 0 :
+                    print ("Vous ne pouvez pas utilisez votre attaque spéciale plus de deux fois sauf si vous vous en acheter à la boutique")
+                    print ("Vous n'avez pas attaqué")
+                if Attack_spéciale > 0 :
+                    Attack_spéciale = Attack_spéciale - 1
+                    coup_spécial = randint(Attack_Toi, 200)
+                    print (f"vous avez attaqué de {coup_spécial}")
+                    boss = boss - coup_spécial
+                    print (f"le boss lui reste {boss} vies")
 
+        
+
+
+            #attaque du boss
+            action_boss = randint(0, 1)
+            if action_boss == 0 :
+                attack_b = randint(0, Attack_Boss)
+                print (f'Le boss vous a attaqué de {attack_b}')
+                joueur = joueur - attack_b
+                if après == 1 :
+                    après = 0
+                    joueur = joueur + attack_b
+                print (f'Ils vous reste {joueur} vies')
+            if action_boss == 1 :
+                vies_b = randint(0, regagne_vie)
+                print (f'Le boss à regagné {vies_b} de vies')
+                boss = boss + vies_b
+                print (f'Le boss lui reste {boss} vies')
+
+            if boss == 0 :
+                boss_final = "non"
+                print ("tu as fini le jeu merci d'y avoir joué")
