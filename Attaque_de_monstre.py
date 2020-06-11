@@ -27,13 +27,15 @@ regagne_vie = 9
 rénitialiser_AttackToi = 9 
 Attack_Toi = 10
 Attack_Boss = 15
+Attack_spéciale = 2
 Étages = 1
 
 
 print (f'vous êtes dans l étage {Étages} et vous êtes contre un monstre')
 while boss > 0 and joueur > 0 :
     print(f"\033[31mTu as {joueur} vies et le boss en a {boss}.\033[0m")
-    action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2 et si vous voulez esquivez tapez 3.')
+    print ("\033[32m·\033[0m")
+    action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
     #Ton attaque
     if action == "1" :
         attack = randint(0, Attack_Toi)
@@ -53,6 +55,18 @@ while boss > 0 and joueur > 0 :
         if esquive == 0 :
             print ("\033[33mvous avez esquivé le coup\033[0m")
             après = 1
+    if action == "4" :
+        if Attack_spéciale == 0 :
+            print ("Vous ne pouvez pas utilisez votre attaque spéciale plus de deux fois sauf si vous vous en acheter à la boutique")
+            print ("Vous n'avez pas attaqué")
+        if Attack_spéciale > 0 :
+            Attack_spéciale = Attack_spéciale - 1
+            coup_spécial = randint(Attack_Toi, 200)
+            print (f"vous avez attaqué de {coup_spécial}")
+            boss = boss - coup_spécial
+            print (f"le boss lui reste {boss} vies")
+
+        
 
 
     #attaque du boss
@@ -62,6 +76,7 @@ while boss > 0 and joueur > 0 :
         print (f'Le boss vous a attaqué de {attack_b}')
         joueur = joueur - attack_b
         if après == 1 :
+            après = 0
             joueur = joueur + attack_b
         print (f'Ils vous reste {joueur} vies')
     if action_boss == 1 :
@@ -95,7 +110,7 @@ while boss > 0 and joueur > 0 :
                 print ('   3 :     | ailes          | +10 esc  | TLM    | 50€')
                 print ('   4 :     | arc            | +10 att  | archer | 100€')
                 print ('   5 :     | potion         | +10 att  | Mage   | 100€')
-                print ('   6 :     | boules spéciale| +2 spé   | TLM    | 200€')
+                print ('   6 :     | boules spéciale| +4 spé   | TLM    | 200€')
                 print ("Le jeu est encore pour l'instant en train de se développé")
 
 
