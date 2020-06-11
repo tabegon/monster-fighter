@@ -112,16 +112,41 @@ while boss > 0 and joueur > 0 :
                 print ('nb à taper | objets         | Qualités | Pour   | Coûte')
                 print ('   1 :     | épée           | +10 att  |guerrier| 100€')
                 print ('   2 :     | baguette       | +10 vies | TLM    | 50€')
-                print ('   3 :     | ailes          | +10 esc  | TLM    | 50€')
+                print ('   3 :     | ailes (X stock)| +10 esc  | TLM    | 50€')
                 print ('   4 :     | arc            | +10 att  | archer | 100€')
                 print ('   5 :     | potion         | +10 att  | Mage   | 100€')
                 print ('   6 :     | boules spéciale| +4 spé   | TLM    | 200€')
-                print ("Le jeu est encore pour l'instant en train de se développé")
+                achetée = input ("Qu'est ce que vous voulez vous achetés (vous avez le droit qu'a 1 objet après vou pourrez en re-acheter)")
+                if achetée == "1" :
+                    Attack_Toi = Attack_Toi + 10
+                    Argent = Argent - 100
+                    print ("vous avez achetée et utilisée l'épée")
+                if achetée == "2" :
+                    vies = vies + 10
+                    Argent = Argent - 50
+                    print ("vous avez achetée et utilisée la baguette")
+                if achetée == "3" :
+                    print ("Il n'y a plus de stock")
+                if achetée == "4" :
+                    Attack_Toi = Attack_Toi + 10
+                    Argent = Argent - 100
+                    print ("vous avez achetée et utilisée l'arc")
+                if achetée == "5" :
+                    Attack_Toi = Attack_Toi + 10
+                    Argent = Argent - 100
+                    print ("vous avez achetée et utilisée les potions de force")
+                if achetée == "6" :
+                    Attack_spéciale = Attack_spéciale + 4
+                    Argent = Argent - 200
+                    print ("vous avez achetée et utilisée les boules spéciales")
+                
 
 
     if joueur <= 0 :
         joueur = rénitialiser_AttackToi + 21
-        boss = rénitialiser_boss
+        boss = rénitialiser_boss - 20
+        rénitialiser_boss = rénitialiser_boss - 20
+        Attack_Boss = Attack_Boss - 4
         Étages = Étages - 1
         if Étages == 0 :
             Étages = 1
