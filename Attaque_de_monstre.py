@@ -16,6 +16,7 @@ att_guerrier = 20
 vie_guerrier = 5
 #joueur
 joueur = 30
+vies = 10
 print("\033[34m1: guerrier\033[0m")
 print("\033[32m2: Archer\033[0m")
 print("\033[35m3: Mage\033[0m")
@@ -48,7 +49,7 @@ while boss > 0 and joueur > 0 :
         boss = boss - attack
         print (f'Le boss lui reste {boss} vies')
     if action == "2" :
-        vies = randint(0, Attack_Toi)
+        vies = randint(vies, vies+20)
         print (f'Vous avez regagné {vies} de vies')
         joueur = joueur + vies
     if action == "3" :
@@ -98,6 +99,7 @@ while boss > 0 and joueur > 0 :
             print ('Maintenant contre le boss final mais juste avant un petit moment de plisir')
             boss_final = "oui"
         print (f"\033[32mTu as gagné:] maintenant tu est à l'étage n°{Étages}\033[0m")
+        print (f"\033[32mVous aviez {Argent}€ avant\033[0m")
         Argent = Argent + randint(0, 30)
         choix = input (f"\033[32mTu as {Argent}€ tape 1 si tu veux continuer l'aventure, ou si tu veux regarder la boutique tape 2\033[0m")
         if choix == "2" :
@@ -116,7 +118,8 @@ while boss > 0 and joueur > 0 :
                 print ('   4 :     | arc            | +10 att  | archer | 100€')
                 print ('   5 :     | potion         | +10 att  | Mage   | 100€')
                 print ('   6 :     | boules spéciale| +4 spé   | TLM    | 200€')
-                achetée = input ("Qu'est ce que vous voulez vous achetés (vous avez le droit qu'a 1 objet après vou pourrez en re-acheter)")
+                print ('   n :     | pour annuler   | +0 rien  | TLM    | 0€')
+                achetée = input ("Qu'est ce que vous voulez vous achetés (vous avez le droit qu'a 1 objet après vous pourrez en re-acheter)")
                 if achetée == "1" :
                     Attack_Toi = Attack_Toi + 10
                     Argent = Argent - 100
