@@ -19,6 +19,7 @@ joueur = 30
 print("\033[34m1: guerrier\033[0m")
 print("\033[32m2: Archer\033[0m")
 print("\033[35m3: Mage\033[0m")
+print ("écrivez n'importe quoi ici on est encore en train de développé Merci")
 métier = input("\033[33mQuel métier choisi tu\033[0m")
 rénitialiser_boss = 50
 boss = 50
@@ -95,8 +96,7 @@ while boss > 0 and joueur > 0 :
                 print ('   4 :     | arc            | +10 att  | archer | 100€')
                 print ('   5 :     | potion         | +10 att  | Mage   | 100€')
                 print ('   6 :     | boules spéciale| +2 spé   | TLM    | 200€')
-                achetée = input ("Qu'est ce vous voulez acheter?")
-                achetée2 = input ("Une autre chose ?")
+                print ("Le jeu est encore pour l'instant en train de se développé")
 
 
     if joueur <= 0 :
