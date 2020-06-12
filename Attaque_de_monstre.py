@@ -40,7 +40,7 @@ while boss > 0 and joueur > 0 :
     action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
     marche = randint(0, 3)
     if marche == 0 :
-        print ("\033[35mt'on attaque à échouée\033[0m")
+        print ("\033[35mton attaque à échouée\033[0m")
     #Ton attaque
     if action == "1" :
         if marche > 0 :
@@ -51,6 +51,8 @@ while boss > 0 and joueur > 0 :
                 print ("\033[33mVous avez donner un coup critique\033[0m")
                 print (f'Vous avez attaqué de {attack}')
                 boss = boss - attack
+                if après == 2 :
+                    boss = boss + attack
                 print (f'Le boss lui reste {boss} vies')
     if action == "2" :
         if marche > 0 :
@@ -73,6 +75,8 @@ while boss > 0 and joueur > 0 :
                 coup_spécial = randint(Attack_Toi, 200)
                 print (f"vous avez attaqué de {coup_spécial}")
                 boss = boss - coup_spécial
+                if après == 2 :
+                    boss = boss + coup_spécial
                 print (f"le boss lui reste {boss} vies")
 
 
@@ -93,6 +97,14 @@ while boss > 0 and joueur > 0 :
         print (f'Le boss lui reste {boss} vies')
     if action_boss == 2 :
         print ("\033[31mLe boss à esquivée votre coup\033[0m")
+        après = 2
+        attack_b = randint(0, Attack_Boss)
+        print (f'Le boss vous a attaqué de {attack_b}')
+        joueur = joueur - attack_b
+        if après == 1 :
+            après = 0
+            joueur = joueur + attack_b
+        print (f'Ils vous reste {joueur} vies')
     
     if boss <= 0 :
         boss = rénitialiser_boss + 10
@@ -100,6 +112,7 @@ while boss > 0 and joueur > 0 :
         Attack_Boss = Attack_Boss + 5
         Attack_Toi = rénitialiser_AttackToi + 10
         joueur = rénitialiser_toi + 2
+
         Étages = Étages + 1
         if Étages == 20 :
             print ('Vous avez fini')
