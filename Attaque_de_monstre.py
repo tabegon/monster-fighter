@@ -31,13 +31,14 @@ Attack_Boss = 15
 boss_final = 0
 Attack_spéciale = 2
 Étages = 1
+rénitialiser_toi = 30
 
 print (f'vous êtes dans l étage {Étages} et vous êtes contre un monstre')
 while boss > 0 and joueur > 0 :
     print(f"\033[31mTu as {joueur} vies et le boss en a {boss}.\033[0m")
     print ("\033[32m·\033[0m")
     action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
-    marche = randint(0, 2)
+    marche = randint(0, 3)
     if marche == 0 :
         print ("\033[35mt'on attaque à échouée\033[0m")
     #Ton attaque
@@ -98,7 +99,7 @@ while boss > 0 and joueur > 0 :
         rénitialiser_boss = rénitialiser_boss + 10
         Attack_Boss = Attack_Boss + 5
         Attack_Toi = rénitialiser_AttackToi + 10
-        joueur = rénitialiser_AttackToi + 21
+        joueur = rénitialiser_toi + 2
         Étages = Étages + 1
         if Étages == 20 :
             print ('Vous avez fini')
@@ -106,7 +107,7 @@ while boss > 0 and joueur > 0 :
             boss_final = "oui"
         print (f"\033[32mTu as gagné:] maintenant tu est à l'étage n°{Étages}\033[0m")
         print (f"\033[32mVous aviez {Argent}€ avant\033[0m")
-        Argent = Argent + randint(0, 30)
+        Argent = Argent + randint(10, 50)
         choix = input (f"\033[32mTu as {Argent}€ tape 1 si tu veux continuer l'aventure, ou si tu veux regarder la boutique tape 2\033[0m")
         if choix == "2" :
             print ('   ___             _   _                  ')
@@ -117,14 +118,15 @@ while boss > 0 and joueur > 0 :
             print ('                            |_|           ')
             boutique = input('vous êtes dans la boutique vous pouvez vous acheter des trucs en tapant 1 sinon tapez 2.')
             if boutique == "1" :
-                print ('nb à taper | objets         | Qualités | Pour   | Coûte')
-                print ('   1 :     | épée           | +10 att  |guerrier| 100€')
-                print ('   2 :     | baguette       | +10 vies | TLM    | 50€')
-                print ('   3 :     | ailes (X stock)| +10 esc  | TLM    | 50€')
-                print ('   4 :     | arc            | +10 att  | archer | 100€')
-                print ('   5 :     | potion         | +10 att  | Mage   | 100€')
-                print ('   6 :     | boules spéciale| +4 spé   | TLM    | 200€')
-                print ('   n :     | pour annuler   | +0 rien  | TLM    | 0€')
+                print ('nb à taper | objets         | Qualités   | Pour   | Coûte')
+                print ('   1 :     | épée           | +10 att    |guerrier| 100€')
+                print ('   2 :     | baguette       | +10 vies   | TLM    | 50€')
+                print ('   3 :     | ailes (X stock)| +10 esc    | TLM    | 50€')
+                print ('   4 :     | arc            | +10 att    | archer | 100€')
+                print ('   5 :     | potion         | +10 att    | Mage   | 100€')
+                print ('   6 :     | boules spéciale| +4 spé     | TLM    | 200€')
+                print ("   7 :     | pomme d'or     | +10 joueur | TLM    | 150€")
+                print ('   n :     | pour annuler   | +0 rien    | TLM    | 0€')
                 achetée = input ("Qu'est ce que vous voulez vous achetés (vous avez le droit qu'a 1 objet après vous pourrez en re-acheter)")
                 if achetée == "1" :
                     Attack_Toi = Attack_Toi + 10
@@ -148,11 +150,15 @@ while boss > 0 and joueur > 0 :
                     Attack_spéciale = Attack_spéciale + 4
                     Argent = Argent - 200
                     print ("vous avez achetée et utilisée les boules spéciales")
+                if achetée == "7" :
+                    joueur = rénitialiser_toi + 10
+                    rénitialiser_toi = rénitialiser_toi + 10
+                    Argent = Argent - 150
+                    print ("vous avez achetée et utilisée la pomme d'or")
                 
 
-
     if joueur <= 0 :
-        joueur = rénitialiser_AttackToi + 21
+        joueur = rénitialiser_toi
         boss = rénitialiser_boss - 20
         rénitialiser_boss = rénitialiser_boss - 20
         Attack_Boss = Attack_Boss - 4
