@@ -7,7 +7,7 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
 Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 
 ## Commandes
-Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà :
+* Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà :
     * L'attaque spéciale peut être utiliser que 2 fois à part si tu achète des boules de pouvoirs
 
 ## Explications de choses incompréhensible
@@ -19,3 +19,4 @@ Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes
     * "vies" = ce ne sont pas les vies que vous avez mais le vies que vous pouvez regagnez donc si ça te fait +20vies tu peut   gagné de 20 à 40 vies pourquoi 40 parce que c'est __`randint(vies, vies+20)`__ donc le nombre sera entre le nombre de vies à regagné et entre le nombre de vies à regagné plus 20 c'était une partie du code.
 ***
 Developpé par Théo Abegon
+***
