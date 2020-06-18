@@ -1,6 +1,8 @@
 from random import *
 from pygame import *
 
+from Hero import Hero
+
 ACTION_ATTAQUE_SPECIALE = "4"
 
 ACTION_ESQUIVER = "3"
@@ -10,30 +12,34 @@ ACTION_REGENERATION_VIE = "2"
 ACTION_ATTAQUE = "1"
 après = 0
 Argent = 0
-#mage
-esc_mage = 5
-vie_mage = 20
-att_mage = 10
-#archer
-esc_Arché = 20
-vie_archer = 10
-att_archer = 5
-#guerrier
-esc_guerrier = 10
-att_guerrier = 20
-vie_guerrier = 5
-#joueur
-joueur = 30
-vies = 10
-print("\033[34m1: guerrier\033[0m")
-print("\033[32m2: Archer\033[0m")
-print("\033[35m3: Mage\033[0m")
-print ("écrivez n'importe quoi ici on est encore en train de développér Merci")
-métier = input("\033[33mQuel métier choisi tu\033[0m")
+
+
+
+def choix_hero():
+    print("\033[34m1: guerrier\033[0m")
+    print("\033[32m2: Archer\033[0m")
+    print("\033[35m3: Mage\033[0m")
+    print("écrivez n'importe quoi ici on est encore en train de développér Merci")
+    choix = input("\033[33mQuel métier choisi tu\033[0m")
+    if choix == "1":
+        return  Hero('Guerrier', 10, 20, 5, 10)
+    if choix == "2":
+        return Hero('Archer', 5, 20, 10, 10)
+    if choix == "3":
+        return Hero('Mage', 10, 5, 20, 10)
+
+
+personage = choix_hero()
+personage.qui_es_tu()
+
+# joueur
+joueur = personage.vie
+vies = personage.regeneration
+
 rénitialiser_boss = 50
 boss = 50
 regagne_vie = 9
-rénitialiser_AttackToi = 9 
+rénitialiser_AttackToi = 9
 Attack_Toi = 10
 Attack_Boss = 15
 boss_final = 0
@@ -41,7 +47,7 @@ Attack_spéciale = 2
 Étages = 1
 rénitialiser_toi = 30
 
-print (f'vous êtes dans l étage {Étages} et vous êtes contre un monstre')
+print(f'vous êtes dans l étage {Étages} et vous êtes contre un monstre')
 
 
 def code_boutique():
@@ -233,9 +239,10 @@ def code_boss_final():
 
 while boss > 0 and joueur > 0:
     print(f"\033[31mTu as {joueur} vies et le boss en a {boss}.\033[0m")
-    print ("\033[32m·\033[0m")
-    action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
-    #Ton attaque
+    print("\033[32m·\033[0m")
+    action = input(
+        'tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
+    # Ton attaque
     if action == ACTION_ATTAQUE:
         attaque_personage()
     if action == ACTION_REGENERATION_VIE:
@@ -245,34 +252,33 @@ while boss > 0 and joueur > 0:
     if action == ACTION_ATTAQUE_SPECIALE:
         attaque_speciale_personage()
 
-
-    #Attaque du monstre
+    # Attaque du monstre
     action_boss = randint(0, 2)
-    if action_boss == 0 :
+    if action_boss == 0:
         attack_b = randint(0, Attack_Boss)
-        print (f'Le boss vous a attaqué de {attack_b}')
+        print(f'Le boss vous a attaqué de {attack_b}')
         joueur = joueur - attack_b
-        if après == 1 :
+        if après == 1:
             après = 0
             joueur = joueur + attack_b
-        print (f'Ils vous reste {joueur} vies')
-    if action_boss == 1 :
+        print(f'Ils vous reste {joueur} vies')
+    if action_boss == 1:
         vies_b = randint(0, regagne_vie)
-        print (f'Le boss à regagné {vies_b} de vies')
+        print(f'Le boss à regagné {vies_b} de vies')
         boss = boss + vies_b
-        print (f'Le boss lui reste {boss} vies')
-    if action_boss == 2 :
-        print ("\033[31mLe boss à esquivée votre coup\033[0m")
+        print(f'Le boss lui reste {boss} vies')
+    if action_boss == 2:
+        print("\033[31mLe boss à esquivée votre coup\033[0m")
         après = 2
         attack_b = randint(0, Attack_Boss)
-        print (f'Le boss vous a attaqué de {attack_b}')
+        print(f'Le boss vous a attaqué de {attack_b}')
         joueur = joueur - attack_b
-        if après == 1 :
+        if après == 1:
             après = 0
             joueur = joueur + attack_b
-        print (f'Ils vous reste {joueur} vies')
-    
-    if boss <= 0 :
+        print(f'Ils vous reste {joueur} vies')
+
+    if boss <= 0:
         boss = rénitialiser_boss + 10
         rénitialiser_boss = rénitialiser_boss + 10
         Attack_Boss = Attack_Boss + 5
@@ -280,25 +286,25 @@ while boss > 0 and joueur > 0:
         joueur = rénitialiser_toi + 2
 
         Étages = Étages + 1
-        if Étages == 20 :
-            print ('Vous avez fini')
-            print ('Maintenant contre le boss final mais juste avant un petit moment de plisir')
+        if Étages == 20:
+            print('Vous avez fini')
+            print('Maintenant contre le boss final mais juste avant un petit moment de plisir')
             boss_final = "oui"
-        print (f"\033[32mTu as gagné:] maintenant tu est à l'étage n°{Étages}\033[0m")
-        print (f"\033[32mVous aviez {Argent}€ avant\033[0m")
+        print(f"\033[32mTu as gagné:] maintenant tu est à l'étage n°{Étages}\033[0m")
+        print(f"\033[32mVous aviez {Argent}€ avant\033[0m")
         Argent = Argent + randint(10, 50)
-        choix = input (f"\033[32mTu as {Argent}€ tape 1 si tu veux continuer l'aventure, ou si tu veux regarder la boutique tape 2\033[0m")
+        choix = input(
+            f"\033[32mTu as {Argent}€ tape 1 si tu veux continuer l'aventure, ou si tu veux regarder la boutique tape 2\033[0m")
         if choix == "2": code_boutique()
 
-    if joueur <= 0 :
+    if joueur <= 0:
         joueur = rénitialiser_toi
         boss = rénitialiser_boss - 20
         rénitialiser_boss = rénitialiser_boss - 20
         Attack_Boss = Attack_Boss - 4
         Étages = Étages - 1
-        if Étages == 0 :
+        if Étages == 0:
             Étages = 1
         print(f"\033[36mTu as perdu vous descendez d'un étage dommage :[ maintenant tu est à l'étage n°{Étages}\033[0m")
 
     code_boss_final()
-
