@@ -88,7 +88,7 @@ def code_boutique():
 
 def attaque_personage(marche):
     global attack, coup_critique, boss
-    if marche > 0:
+    if is_action_valid():
         attack = randint(0, Attack_Toi)
         coup_critique = randint(0, 1)
         if coup_critique == 1:
@@ -103,7 +103,7 @@ def attaque_personage(marche):
 
 def regeneration_vie_personage(marche):
     global vies, joueur
-    if marche > 0:
+    if is_action_valid:
         vies = randint(vies, vies + 20)
         print(f'Vous avez regagné {vies} de vies')
         joueur = joueur + vies
@@ -111,7 +111,7 @@ def regeneration_vie_personage(marche):
 
 def esquiver_attaque_personage(marche):
     global esquive, après
-    if marche > 0:
+    if is_action_valid:
         esquive = randint(0, 1)
         if esquive == 0:
             print("\033[33mvous avez esquivé le coup\033[0m")
@@ -120,7 +120,7 @@ def esquiver_attaque_personage(marche):
 
 def attaque_speciale_personage(marche):
     global Attack_spéciale, coup_spécial, boss
-    if marche > 0:
+    if is_action_valid:
         if Attack_spéciale == 0:
             print(
                 "Vous ne pouvez pas utilisez votre attaque spéciale plus de deux fois sauf si vous vous en acheter à la boutique")
@@ -135,22 +135,28 @@ def attaque_speciale_personage(marche):
             print(f"le boss lui reste {boss} vies")
 
 
+def is_action_valid():
+    marche = randint(0, 3)
+    if marche == 0:
+        print("\033[35mTon action à échouée\033[0m")
+        return False
+    else:
+        return True
+
+
 while boss > 0 and joueur > 0:
     print(f"\033[31mTu as {joueur} vies et le boss en a {boss}.\033[0m")
     print ("\033[32m·\033[0m")
     action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
-    marche = randint(0, 3)
-    if marche == 0 :
-        print ("\033[35mton attaque à échouée\033[0m")
     #Ton attaque
     if action == "1":
-        attaque_personage(marche)
+        attaque_personage()
     if action == "2":
-        regeneration_vie_personage(marche)
+        regeneration_vie_personage()
     if action == "3":
-        esquiver_attaque_personage(marche)
+        esquiver_attaque_personage()
     if action == "4":
-        attaque_speciale_personage(marche)
+        attaque_speciale_personage()
 
 
     #attaque du boss
