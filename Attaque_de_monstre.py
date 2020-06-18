@@ -1,5 +1,13 @@
 from random import *
 from pygame import *
+
+ACTION_ATTAQUE_SPECIALE = "4"
+
+ACTION_ESQUIVER = "3"
+
+ACTION_REGENERATION_VIE = "2"
+
+ACTION_ATTAQUE = "1"
 après = 0
 Argent = 0
 #mage
@@ -149,17 +157,17 @@ while boss > 0 and joueur > 0:
     print ("\033[32m·\033[0m")
     action = input ('tapez 1 si vous voulez attaquez, si vous voulez regagnez de la vie tapez 2, si vous voulez esquivez tapez 3 et si vous voulez utiliser votre attaque spécial taper 4.')
     #Ton attaque
-    if action == "1":
+    if action == ACTION_ATTAQUE:
         attaque_personage()
-    if action == "2":
+    if action == ACTION_REGENERATION_VIE:
         regeneration_vie_personage()
-    if action == "3":
+    if action == ACTION_ESQUIVER:
         esquiver_attaque_personage()
-    if action == "4":
+    if action == ACTION_ATTAQUE_SPECIALE:
         attaque_speciale_personage()
 
 
-    #attaque du boss
+    #Attaque du monstre
     action_boss = randint(0, 2)
     if action_boss == 0 :
         attack_b = randint(0, Attack_Boss)
