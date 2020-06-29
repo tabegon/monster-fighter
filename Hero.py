@@ -1,6 +1,6 @@
 class Hero:
     def __init__(self, nom, attaque, esquive, vie, maxVie, regeneration):
-        self.nom = nom
+        self.nom = input("Quel est ton nom? ")
         self.attaque = attaque
         self.esquive = esquive
         self.vie_initiel = vie
@@ -10,7 +10,7 @@ class Hero:
         self.argent = 0
 
     def qui_es_tu(self):
-        texte(f"Je suis {self.nom}. J'ai une attaque de {self.attaque}, une esquive de {self.esquive} et je me regenere de {self.regeneration} points de vies", (600, 50), 30, red)
+        print(f"Je suis {self.nom}. J'ai une attaque de {self.attaque}, une esquive de {self.esquive} et je me regenere de {self.regeneration} points")
 
     def reinitialiser_vie(self):
         self.vie = self.vie_initiel

@@ -1,7 +1,7 @@
 
 import pygame
 from pygame.locals import *
-from Hero import Hero
+from Hero import *
 
 pygame.init()
 
@@ -84,27 +84,6 @@ pygame.display.flip()
 
 #________________________________________________________________________________________________________ 
 
-# while reponse == False:
-#
-#    def choix_hero():
-#        global choix
-#        texte("1 : Mage", (0, 0), 30, blue)
-#        print("\033[32m2: Archer\033[0m")
-#        print("\033[35m3: Mage\033[0m")
-#        choix = texte("Quel métier choisi tu?", (0,0), 30, blue)
-#        if choix == "1":
-#            return  Hero('Guerrier', 20, 10, 30, 30, 5)
-#            reponse = True
-#        if choix == "2":
-#            return Hero('Archer', 5, 20, 30, 30, 10)
-#            reponse = True
-#        if choix == "3":
-#            return Hero('Mage', 10, 5, 30, 30, 20)
-#            reponse = True
-#        else:
-#            print("Pardon je n'ai pas compris")
-#            reponse = False
-
 #_____________________________________________________________________________________________________________________
 
 #BOUCLE INFINIE
@@ -119,8 +98,15 @@ while continuer:
 				efface_texte()
 				is_appuyer_button(3,attaque)
 				texte("Attaque marche", (550, 150), 50, green)
+
 			if Guerrier.get_rect(x = 1450, y = 0).collidepoint(x, y):
 				efface_texte()
+				Hero('Guerrier', 10, 20, 30, 30, 5)
+				Hero.qui_es_tu()
+
+			if Mage.get_rect(x = 1300, y = 0).collidepoint(x, y):
+				efface_texte()
+				Hero('Mage', 10, 5, 30, 30, 20)
 			else:
 				texte("il n'est pas ici le bouton, tampis", (300, 170), 30, white)
 		if event.type == QUIT:
