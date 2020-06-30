@@ -1,6 +1,6 @@
 
 class Hero:
-    def __init__(self, nom, attaque, esquive, vie, maxVie, regeneration):
+    def __init__(self, nom, attaque, esquive, vie, maxVie, regeneration, image):
         self.nom = nom
         self.attaque = attaque
         self.esquive = esquive
@@ -8,6 +8,7 @@ class Hero:
         self.vie = vie
         self.maxVie = maxVie
         self.regeneration = regeneration
+        self.image = image
         self.argent = 0
 
     def qui_es_tu(self):
