@@ -31,7 +31,7 @@ def choix_hero():
 
 
 personage = choix_hero()
-    
+print(personage.qui_es_tu)
 # joueur
 joueur = personage.vie
 vies = personage.regeneration
