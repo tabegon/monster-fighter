@@ -1,6 +1,7 @@
+from random import *
 class Monster:
-    def __init__(self, attaque, regeneration, vie, MaxVie):
-        self.attaque = attaque
-        self.regeneration = regeneration
-        self.vie = vie
-        self.MaxVie = MaxVie
+    def __init__(self):
+        self.attaque = randint(10, 30)
+        self.regeneration = randint(10, 30)
+        self.vie = randint(50, 250)
+        self.MaxVie = self.vie

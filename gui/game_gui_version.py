@@ -17,7 +17,7 @@ yellow = (255, 209, 0)
 green = (36, 217, 0)
 blue = (0, 35, 255)
 orange = (255, 120, 0)
-monstre = Monster(20, 30, 200, 200)
+monstre = Monster()
 rien = pygame.image.load("./gui/rien.png")
 rien = pygame.transform.scale(rien, (100, 100))
 sleep = 4.0
@@ -48,12 +48,11 @@ def efface_texte():
 	fenetre.blit(monster_image, (0, 0))
 	health_bar(fenetre)
 	fenetre.blit(personnage.image, (20, 725))
-	texte(f"{personnage.vie}", (230, 746), 30, white)
+	ta_vie()
 	texte(f"{personnage.esquive}", (385, 746), 30, white)
-	texte(f"{tour}", (517, 746), 30, white)
+	texte(f"{tour}", (536, 746), 30, white)
 	texte(f"{personnage.attaque}", (224, 819), 30, white)
 	texte(f"{personnage.regeneration}", (378, 819), 30, white)
-
 
 def Choix_hero(position, guerrier, mage, archer):
 	x, y = position
@@ -166,7 +165,7 @@ def Attaque_monstre():
 			time.sleep(3.0)
 
 def fin_de_vie():
-	global tour
+	global tour, monstre
 	if monstre.vie <= 0:
 		efface_texte()
 		monstre.vie = monstre.MaxVie
@@ -175,6 +174,9 @@ def fin_de_vie():
 		texte(f"Vous êtes maintenant à l'étage n°{tour}", (700, 50), 50, yellow)
 		time.sleep(3.0)
 		efface_texte()
+		monstre = Monster()
+		#la_boutique()
+
 	if personnage.vie <= 0:
 		efface_texte()
 		monstre.vie = monstre.MaxVie
@@ -186,7 +188,7 @@ def fin_de_vie():
 			pygame.QUIT()
 
 def health_bar(surface):
-	texte(f"{monstre.vie}/{monstre.MaxVie}", (250, 40), 30, red)
+	texte(f"{monstre.vie}/{monstre.MaxVie}", (210, 40), 30, red)
 	
 	# definir notre couleur (vert clair)
 	color_bar = (111, 210, 46)
@@ -208,15 +210,28 @@ def health_bar(surface):
 	if monstre.vie <= 50:
 		pygame.draw.rect(surface, red, bar_position)
 
-def boutique():
+def la_boutique():
 	texte("BOUTIQUE", (800, 450), 100, red)
+	time.sleep(2.0)
+	efface_texte()
+	fenetre.blit(boutique, (300, 150))
+
+def ta_vie():
+	if personnage.vie > 0:
+		texte(f"{personnage.vie}", (230, 746), 30, white)
+		if personnage.vie <= 20:
+			texte(f"{personnage.vie}", (230, 746), 30, orange)
+		if personnage.vie <= 10:
+			texte(f"{personnage.vie}", (230, 746), 30, red)
+	if personnage.vie <= 0:
+		texte("Mort !", (230, 746), 30, blue)
 
 
-
+		
 #________________________________________________________________________________________________________
 
 #Ouverture de la fenêtre Pygame
-pygame.display.set_caption("Monster fihgter - Jeu Méga cool")
+pygame.display.set_caption("► ► ► Monster fighter - Jeu Méga cool ◄ ◄ ◄")
 fenetre = pygame.display.set_mode((1600, 900), RESIZABLE)
 
 #________________________________________________________________________________________________________
@@ -249,7 +264,7 @@ mage = pygame.transform.scale(mage, (150, 150))
 archer = pygame.image.load("./gui/Boutons/archer.png")
 archer = pygame.transform.scale(archer, (150, 150))
 
-barre = pygame.image.load("./gui/barre_petite.png")
+barre = pygame.image.load("./gui/barre.png")
 
 monster_image = pygame.image.load("./gui/monster.png")
 monster_image = pygame.transform.scale(monster_image, (150, 150))
@@ -263,6 +278,12 @@ mage_image = pygame.transform.scale(mage_image, (100, 100))
 archer_image = pygame.image.load("./gui/archer.png")
 archer_image = pygame.transform.scale(archer_image, (100, 100))
 
+boutique = pygame.image.load("./gui/boutique.png")
+boutique = pygame.transform.scale(boutique, (720, 400))
+
+bannière = pygame.image.load("./gui/banniere.png")
+bannière = pygame.transform.scale(bannière, (1600, 900))
+
 # Collages
 fenetre.blit(fond, (0,0))						# Fond
 fenetre.blit(guerrier, (1450, 0))				# guerrier
@@ -270,6 +291,7 @@ fenetre.blit(mage, (1300, 0))					# mage
 fenetre.blit(archer, (1150, 0))					# Archer
 fenetre.blit(barre, (0, 700))
 fenetre.blit(monster_image, (0, 0))
+#fenetre.blit(bannière, (0, 0))
 
 #________________________________________________________________________________________________________ 
 
@@ -288,7 +310,6 @@ while continuer:
 		if event.type == MOUSEBUTTONDOWN:
 			x,y = event.pos
 			print(event)
-			health_bar(fenetre)
 			if hero == False:
 				Choix_hero(event.pos, guerrier, mage, archer)
 			health_bar(fenetre)	
