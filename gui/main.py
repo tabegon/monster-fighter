@@ -57,9 +57,11 @@ def efface_texte():
 	fenetre.blit(personnage.image, (20, 725))
 	ta_vie()
 	texte(f"{personnage.esquive}", (385, 746), 30, white)
-	texte(f"{tour}", (536, 746), 30, white)
-	texte(f"{personnage.attaque}", (224, 819), 30, white)
-	texte(f"{personnage.regeneration}", (378, 819), 30, white)
+	texte(f"{tour}", (550, 746), 30, white)
+	texte(f"{personnage.attaque}", (248, 819), 30, white)
+	texte(f"{personnage.regeneration}", (413, 819), 30, white)
+	texte(f"{personnage.argent}", (564, 819), 30, white)
+	
 
 def Choix_hero(position, guerrier, mage, archer):
 	x, y = position
@@ -245,6 +247,8 @@ def la_boutique():
 def ta_vie():
 	if personnage.vie > 0:
 		texte(f"{personnage.vie}", (230, 746), 30, white)
+		if personnage.vie == personnage.maxVie:
+			texte(f"{personnage.vie}", (230, 746), 30, green)
 		if personnage.vie <= 20:
 			texte(f"{personnage.vie}", (230, 746), 30, orange)
 		if personnage.vie <= 10:
@@ -263,7 +267,7 @@ def ta_le_coffre():
 	fenetre.blit(coffre_ouvert, (571, 207))
 	if dans_coffre == 0:
 		argent_gagne = randint(50, 100)
-		texte(f"{argent_gagne} euros", (600, 100), 30, blue)
+		texte(f"{argent_gagne} pièces d'or", (600, 100), 30, blue)
 		attaque_gagne = randint(2, 10)
 		texte(f"{attaque_gagne} d'attaque", (600, 200), 30, blue)
 		personnage.argent += argent_gagne
@@ -272,19 +276,19 @@ def ta_le_coffre():
 		boules_speciale_gagne = randint(1, 4)
 		texte(f"{boules_speciale_gagne} boules spéciales", (600, 100), 30, blue)
 		argent_gagne = randint(50, 100)
-		texte(f"{argent_gagne} euros", (600, 200), 30, blue)
+		texte(f"{argent_gagne} pièces d'or", (600, 200), 30, blue)
 		personnage.argent += argent_gagne
 		attack_speciale += boules_speciale_gagne
 	if dans_coffre == 2:
 		argent_gagne = randint(50, 100)
-		texte(f"{argent_gagne} euros", (600, 100), 30, blue)
+		texte(f"{argent_gagne} pièces d'or", (600, 100), 30, blue)
 		esquive_gagne = randint(10, 30)
-		texte(f"{esquive_gagne} d'esquive", (600, 100), 30, blue)
+		texte(f"{esquive_gagne} d'esquive", (600, 200), 30, blue)
 		personnage.argent += argent_gagne
 		personnage.esquive += esquive_gagne
 	if dans_coffre == 3:
 		argent_gagne = randint(50, 100)
-		texte(f"{argent_gagne} euros", (600, 100), 30, blue)
+		texte(f"{argent_gagne} pièces d'or", (600, 100), 30, blue)
 		vie_gagne = randint(10, 30)
 		texte(f"{vie_gagne} vies (t'enlève les unités pour combien de pomme d'or)", (600, 200), 30, blue)
 
@@ -292,14 +296,13 @@ def ta_le_coffre():
 		personnage.maxVie += vie_gagne
 	if dans_coffre == 4:
 		argent_gagne = randint(50, 100)
-		texte(f"{argent_gagne} euros", (600, 100), 30, blue)
+		texte(f"{argent_gagne} pièces d'or", (600, 100), 30, blue)
 		regeneration_gagner = randint(10, 20)
 		texte(f"{regeneration_gagner} de régeneration", (600, 200), 30, blue)
 		personnage.argent += argent_gagne
 		personnage.regeneration += regeneration_gagner
-
-
-
+	time.sleep(3.0)
+	efface_texte()
 
 #________________________________________________________________________________________________________
 
