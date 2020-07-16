@@ -28,11 +28,12 @@ rien = pygame.transform.scale(rien, (100, 100))
 
 monstre = Monster()
 monstre2 = Monster()
-personnage = Hero("rien", 0, 0, 1, 1, 0, rien)
+personnage = Hero("rien", 0, 0, 1, 30, 0, rien)
 
 hero = False
 is_playing = False
 
+essoufflement = pygame.mixer.Sound("./gui/essoufflement.wav")
 
 def creaTexteObj(texte, police, couleur) :
 	texteSurface = police.render(texte,True,couleur)
@@ -322,14 +323,20 @@ def la_boutique():
 	fenetre.blit(boutique, (300, 150))
 
 def ta_vie():
+	global essoufflement
 	if personnage.vie > 0:
 		texte(f"{personnage.vie}", (230, 746), 30, white)
 		if personnage.vie == personnage.maxVie:
 			texte(f"{personnage.vie}", (230, 746), 30, green)
+			pygame.mixer.stop()
+
 		if personnage.vie <= 20:
 			texte(f"{personnage.vie}", (230, 746), 30, orange)
+			pygame.mixer.stop()
 		if personnage.vie <= 10:
 			texte(f"{personnage.vie}", (230, 746), 30, red)
+			essoufflement.play()
+
 	if personnage.vie <= 0:
 		texte("Mort !", (255, 746), 30, blue)
 
