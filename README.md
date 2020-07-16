@@ -9,39 +9,42 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 ### Commandes
 - Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà :
     - L'attaque spéciale peut être utiliser que 2 fois à part si tu achète des boules de pouvoirs
+    - les commandes permettant d'acheter:
+        - "a" = attaque
+        - "s" = attaque spéciale
+        - "e" = esquive
+        - "r" = régénération
+        - "*" = pomme d'or (+10 pour le maximum de vies)
 
 ### Explications de choses incompréhensible
-- Dans la boutique, "TLM" veut dire Tout Le Monde Je pense que j'ai été assez clair
-- Toujours dans la boutique, la qualité on ne comprend pas toujours ce que ça veut dire :
-    - "Qualité" = c'est ce que tu pourra gagné en achetant les objets
-    - "Att" = ça veut tout simplement dire "attaque"
-    - "Esc" = "esquive" (pas du tout compréhensible)
-    - "vies" = ce ne sont pas les vies que vous avez mais le vies que vous pouvez regagnez donc si ça te fait +20vies tu peut   gagné de 20 à 40 vies pourquoi 40 parce que c'est __`randint(vies, vies+20)`__ donc le nombre sera entre le nombre de vies à regagné et entre le nombre de vies à regagné plus 20 c'était une partie du code.
-    - "joueur" = ça c'est vraiment incompréhensible c'est pour ça que c'est ici et qu'on vous l'expliquer joueur c'est le nombre de vies du joueur dans toutes les parties avant joueur est de 30 si tu t'achète une pomme d'or tu en aura 40 si on vous explique comme ça c'est deux fois plus simple.
+- Il y a rien d'incompréhensible vous devrai m'en faire remarquez des choses incompréhensible
 
 ## Gui
 
 ### À propos de l'interface graphique
-- Il y a encore beaucoup de chose à améliorer :
-    - Deux boutons :
-        - Esquive
-        - Shop
-    - Ta barre de stats
-    - La boutique en elle même
-    - et autres choses
-- On a aussi des choses à ajouter (très beaucoup) :
-    - Des mondes
-    - des fonds
-    - Jeu multijoueur (max 2)
-    - descriptions de monstres
-    - boss
-    - des alliés
-    - de nouvelles attaque
-    - et plein d'autres choses
-- Nous avons encore quelques bugs à régler :
-    - Si vous touchez autre pars que sur les boutons le jeu s'arrête
+- Des choses à faire
+    - Il y a encore beaucoup de bugs à réparer donc ne vous attendez pas as un jeu bien dévellopper:
+        - si vous touchez à un endroit ou il y a un métier ça mettra le nouveau métier
+    - On a aussi des choses à ajouter (très beaucoup) :
+        - Des mondes
+        - des fonds
+        - Jeu multijoueur (max 2)
+        - boss
+        - des alliés
+        - de nouvelles attaque
+        - et plein d'autres choses
+### des touches permettant d'acheter
+    - "a" = attaque
+    - "s" = attaque spéciale
+    - "e" = esquive
+    - "r" = régénération
+    - "*" = pomme d'or (+10 pour le maximum de vies)
+
+### Images du jeu
+![monster_fighter](images/monster_fighter.png)
+
 ***
 ```markdown
-#Developpé par Théo Abegon
+# Crée et développé par Théo Abegon et aider par Marc Abegon. Merci pour tous.
 ```  
 ***

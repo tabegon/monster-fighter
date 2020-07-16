@@ -63,8 +63,6 @@ def efface_texte():
 	texte(f"{personnage.attaque}", (248, 819), 30, white)
 	texte(f"{personnage.regeneration}", (413, 819), 30, white)
 	texte(f"{personnage.argent}", (564, 819), 30, white)
-	fenetre.blit(premier_monstre, (750, 657))
-	fenetre.blit(deuxieme_monstre, (750, 614))
 	
 
 def Choix_hero(position, guerrier, mage, archer):
@@ -93,7 +91,22 @@ def Choix_hero(position, guerrier, mage, archer):
 def Choix_boutons():
 	global sleep, attack_speciale
 	if attaque.get_rect(x = 750, y = 700).collidepoint(x, y):
-		quel_monstre()
+		attack = randint(0, personnage.attaque)
+		coup_critique = randint(0, 1)
+		if coup_critique == 1:
+			attack += 20
+			sleep += 4.0
+			texte("Vous avez donner un coup critique", (700, 50), 30, yellow)
+		texte(f'Vous avez attaquer de {attack}', (700, 100), 30, blue)
+		monstre.vie -= attack
+		if monstre.vie > 0:
+			time.sleep(3.0)
+			sleep = 4
+			efface_texte()
+			Attaque_monstre()
+		else:
+			efface_texte()
+			texte("Vous avez gagnez", (700, 500), 100, green)
 
 	if gagné_vie.get_rect(x = 925, y = 700).collidepoint(x, y):
 		efface_texte()
@@ -187,8 +200,6 @@ def quel_monstre():
 			efface_texte()
 			texte("Vous avez gagnez", (700, 500), 100, green)
 	
-	
-
 
 def Attaque_monstre():
 	global apres
@@ -209,7 +220,7 @@ def Attaque_monstre():
 					apres = 0
 			time.sleep(3.0)
 			efface_texte()
-			attaque_monstre2()
+			#attaque_monstre2()
 	if action_boss == 1:
 		vies_b = randint(0, monstre.regeneration)
 		efface_texte()
@@ -219,7 +230,8 @@ def Attaque_monstre():
 			time.sleep(3.0)
 		if monstre.vie > monstre.MaxVie:
 			monstre.vie = monstre.MaxVie
-		attaque_monstre2()
+		efface_texte()
+		#attaque_monstre2()
 
 def fin_de_vie():
 	global tour, monstre
@@ -230,9 +242,16 @@ def fin_de_vie():
 		personnage.vie = personnage.maxVie
 		tour += 1
 		texte(f"Vous êtes maintenant à l'étage n°{tour}", (700, 50), 50, yellow)
+		monstre = Monster()
 		time.sleep(3.0)
 		efface_texte()
-		monstre = Monster()
+		argent = randint(0, 1)
+		if argent == 0:
+			argent_gagne = randint(0, 50)
+			texte(f"Le boss à relaché {argent_gagne} pieces d'or en mourant", (700, 100), 30, green)
+			time.sleep(3.0)
+			efface_texte()
+			personnage.argent += argent_gagne
 		coffre = randint(0, 1)
 		if coffre == 0:
 			ta_le_coffre()
@@ -244,7 +263,7 @@ def fin_de_vie():
 	if personnage.vie <= 0:
 		efface_texte()
 		monstre.vie = monstre.MaxVie
-		personnage.vie = personnage.maxVie
+		personnage.reinitialiser_vie()
 		tour -= 1
 		texte(f"Vous avez desendu d'un étage maintenant vous êtes à l'étage n°{tour}", (900, 50), 50, red)
 		time.sleep(3.0)
@@ -252,8 +271,11 @@ def fin_de_vie():
 			pygame.QUIT()
 
 def health_bar(surface):
+		global bar_position, bar_position2
 		texte(f"{monstre.vie}/{monstre.MaxVie}", (210, 40), 30, red)
 		# ► ► ► ► ► ► ► ► ► ► ► ► 1er Monstre  ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄
+
+
 		# definir notre couleur (vert clair)
 		color_bar = (111, 210, 46)
 		# définir notre couleur de l'arrière plan de la jauge (gris foncée)
@@ -268,29 +290,30 @@ def health_bar(surface):
 		pygame.draw.rect(surface, back_color_bar, back_bar_position)
 		pygame.draw.rect(surface, color_bar, bar_position)
 
-		if monstre.vie <= 100:
-			pygame.draw.rect(surface, orange, bar_position)
-
-		if monstre.vie <= 50:
-			pygame.draw.rect(surface, red, bar_position)
+		VieBoss()
 		
+		# ► ► ► ► ► ► ► ► ► ► ► ► 2eme Monstre  ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄
+
+
 		texte(f"{monstre2.vie}/{monstre2.MaxVie}", (1300, 40), 30, red)
 		# definir notre couleur (vert clair)
 		color_bar = (111, 210, 46)
+
 		# définir notre couleur de l'arrière plan de la jauge (gris foncée)
 		back_color_bar = (60, 63, 60)
+
 		# definir position ainsi que la largeur et de l'epesseur
+
 		bar_position2 = [1425, 70, (monstre2.vie - (monstre2.vie * 2)), 20]
+
 		# definir la position de la jauge ainsi que la largeur et de l'epesseur
+
 		back_bar_position2 = [1425, 70, (monstre2.MaxVie - (monstre2.MaxVie * 2)), 20]
+
 		pygame.draw.rect(surface, back_color_bar, back_bar_position2)
 		pygame.draw.rect(surface, color_bar, bar_position2)
-		if monstre2.vie <= 100:
-			pygame.draw.rect(surface, orange, bar_position2)
 
-		if monstre2.vie <= 50:
-			pygame.draw.rect(surface, red, bar_position2)
-
+		VieBoss()
 
 def la_boutique():
 	texte("BOUTIQUE", (800, 450), 100, red)
@@ -386,6 +409,24 @@ def attaque_monstre2():
 				time.sleep(3.0)
 			if monstre2.vie > monstre2.MaxVie:
 				monstre2.vie = monstre2.MaxVie
+
+def VieBoss():
+	# ► ► ► ► ► ► ► ► ► ► ► ► 1er Monstre  ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄
+
+
+	if monstre.vie <= 100:
+		pygame.draw.rect(fenetre, orange, bar_position)
+
+	if monstre.vie <= 50:
+		pygame.draw.rect(fenetre, red, bar_position)
+
+	# ► ► ► ► ► ► ► ► ► ► ► ► 2eme Monstre  ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄ ◄
+
+	if monstre2.vie <= 100:
+		pygame.draw.rect(fenetre, orange, bar_position2)
+
+	if monstre2.vie <= 50:
+		pygame.draw.rect(fenetre, red, bar_position2)
 
 #________________________________________________________________________________________________________
 
@@ -495,6 +536,39 @@ while continuer:
 			Choix_boutons()
 			fin_de_vie()
 			health_bar(fenetre)
+
+		if event.type == KEYDOWN:
+			if event.key == K_s:
+				if personnage.argent >= 150:
+					texte("Vous avez acheter 2boules spéciales", (700, 100), 30, green)
+					attack_speciale += 2
+					personnage.argent -= 150
+					
+			if event.key == K_a:
+				if personnage.argent >= 100:
+					texte("Vous avez acheter une épée", (700, 100), 30, green)
+					personnage.attaque += 10
+					personnage.argent -= 100
+
+			if event.key == K_e:
+				if personnage.argent >= 100:
+					texte("Vous avez acheter des ailes", (700, 100), 30, green)
+					personnage.esquive += 10
+					personnage.argent -= 100
+
+			if event.key == K_r:
+				if personnage.argent >= 100:
+					texte("Vous avez acheter une baguette", (700, 100), 30, green)
+					personnage.regeneration += 10
+					personnage.argent -= 100
+
+			if event.key == K_ASTERISK:
+				if personnage.argent >= 150:
+					texte("Vous avez acheter une pomme d'or", (700, 100), 30, green)
+					personnage.maxVie += 10
+					personnage.vie = personnage.maxVie
+					personnage.argent -= 100
+
 
 		if event.type == QUIT:
 			continuer = 0

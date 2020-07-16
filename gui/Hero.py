@@ -15,4 +15,4 @@ class Hero:
         return (f"Je suis un {self.nom}. J'ai une attaque de {self.attaque}, une esquive de {self.esquive} et je me regenere de {self.regeneration} points de vies")
 
     def reinitialiser_vie(self):
-        self.vie = self.vie_initiel
+        self.vie = self.maxVie
