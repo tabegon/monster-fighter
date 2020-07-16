@@ -10,11 +10,11 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 - Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà :
     - L'attaque spéciale peut être utiliser que 2 fois à part si tu achète des boules de pouvoirs
     - les commandes permettant d'acheter:
-        - "a" = attaque
-        - "s" = attaque spéciale
-        - "e" = esquive
-        - "r" = régénération
-        - "*" = pomme d'or (+10 pour le maximum de vies)
+        - <kbd>a</kbd> = attaque
+        - <kbd>s</kbd> = attaque spéciale
+        - <kbd>e</kbd> = esquive
+        - <kbd>r</kbd> = régénération
+        - <kbd>*</kbd> = pomme d'or (+10 pour le maximum de vies)
 
 ### Explications de choses incompréhensible
 - Il y a rien d'incompréhensible vous devrai m'en faire remarquez des choses incompréhensible
@@ -34,11 +34,11 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
         - de nouvelles attaque
         - et plein d'autres choses
 ### des touches permettant d'acheter
-    - "a" = attaque
-    - "s" = attaque spéciale
-    - "e" = esquive
-    - "r" = régénération
-    - "*" = pomme d'or (+10 pour le maximum de vies)
+- <kbd>a</kbd> = attaque
+- <kbd>s</kbd> = attaque spéciale
+- <kbd>e</kbd> = esquive
+- <kbd>r</kbd> = régénération
+- <kbd>*</kbd> = pomme d'or (+10 pour le maximum de vies)
 
 ***
 ```markdown
