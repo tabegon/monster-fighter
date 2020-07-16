@@ -40,9 +40,6 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
     - "r" = régénération
     - "*" = pomme d'or (+10 pour le maximum de vies)
 
-### Images du jeu
-![monster_fighter](images/monster_fighter.png)
-
 ***
 ```markdown
 # Crée et développé par Théo Abegon et aider par Marc Abegon. Merci pour tous.
