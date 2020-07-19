@@ -40,6 +40,9 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 - <kbd>r</kbd> = régénération
 - <kbd>*</kbd> = pomme d'or (+10 pour le maximum de vies)
 
+### Des choses à savoir
+- il faut être patient si vous ne voulez pas que quand vous avez peu de pv vous attaquez
+
 ***
 ```markdown
 # Crée et développé par Théo Abegon et aider par Marc Abegon. Merci pour tous.

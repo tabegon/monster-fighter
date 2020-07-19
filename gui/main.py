@@ -9,6 +9,7 @@ from monster import *
 
 pygame.init()
 
+
 # Les variables
 
 red = (255, 0, 0)
@@ -28,12 +29,13 @@ rien = pygame.transform.scale(rien, (100, 100))
 
 monstre = Monster()
 monstre2 = Monster()
-personnage = Hero("rien", 0, 0, 1, 30, 0, rien)
+personnage = Hero("rien", 0, 0, 30, 30, 0, rien)
 
 hero = False
 is_playing = False
 
-essoufflement = pygame.mixer.Sound("./gui/essoufflement.wav")
+battements = pygame.mixer.Sound("./gui/battements.wav")
+son = pygame.mixer.Sound("./gui/fight.wav")
 
 def creaTexteObj(texte, police, couleur) :
 	texteSurface = police.render(texte,True,couleur)
@@ -49,22 +51,22 @@ def texte(texte, coordonée, police, couleur):
 def efface_texte():
 	fenetre.blit(fond, (0,0))
 	fenetre.blit(barre, (0, 700))
-	fenetre.blit(shop, (1450, 700))
-	fenetre.blit(attaque_spéciale, (1275, 700))
-	fenetre.blit(bouton_esquive, (1100,700))
+	attaque_speciale_utiliser()
+	esquive_utiliser()
 	fenetre.blit(gagné_vie, (925, 700))
 	fenetre.blit(attaque, (750, 700))
 	fenetre.blit(monster_image, (0, 0))
 	health_bar(fenetre)
 	fenetre.blit(personnage.image, (20, 725))
 	fenetre.blit(monster_image, (1450, 0))
+	fenetre.blit(case, (1275, 655))
 	ta_vie()
 	texte(f"{personnage.esquive}", (385, 746), 30, white)
 	texte(f"{tour}", (550, 746), 30, white)
 	texte(f"{personnage.attaque}", (248, 819), 30, white)
 	texte(f"{personnage.regeneration}", (413, 819), 30, white)
 	texte(f"{personnage.argent}", (564, 819), 30, white)
-	
+	texte(f"{attack_speciale}", (1345, 679), 30, blue)
 
 def Choix_hero(position, guerrier, mage, archer):
 	x, y = position
@@ -90,10 +92,11 @@ def Choix_hero(position, guerrier, mage, archer):
 		hero = True
 
 def Choix_boutons():
-	global sleep, attack_speciale
+	global sleep, attack_speciale, son
 	if attaque.get_rect(x = 750, y = 700).collidepoint(x, y):
 		attack = randint(0, personnage.attaque)
 		coup_critique = randint(0, 1)
+		son.play()
 		if coup_critique == 1:
 			attack += 20
 			sleep += 4.0
@@ -128,6 +131,7 @@ def Choix_boutons():
 		global apres
 		efface_texte()
 		apres = 1
+		esquive_utiliser()
 		Attaque_monstre()
 
 	if attaque_spéciale.get_rect(x = 1275, y = 700).collidepoint(x, y):
@@ -140,7 +144,7 @@ def Choix_boutons():
 			pygame.mixer.music.load("./gui/canon.mp3")
 			pygame.mixer.music.play()
 			attack_speciale = attack_speciale - 1
-			coup_spécial = randint(personnage.attaque, 200)
+			coup_spécial = randint(personnage.attaque, personnage.attaque + 200)
 			efface_texte
 			texte(f"vous avez attaquer de {coup_spécial}", (700, 50), 30, green)
 			monstre.vie -= coup_spécial
@@ -148,6 +152,7 @@ def Choix_boutons():
 			time.sleep(3.0)
 			pygame.mixer.music.load("./gui/musique.mp3")
 			pygame.mixer.music.play()
+			pygame.mixer.music.queue("./gui/musique2.mp3")
 
 		if monstre.vie > 0:
 			efface_texte()
@@ -155,11 +160,6 @@ def Choix_boutons():
 		else:
 			efface_texte()
 			texte("Vous avez gagnez", (700, 500), 100, green)
-
-	if shop.get_rect(x = 1450, y = 700).collidepoint(x, y):
-		efface_texte()
-		texte("shop marche", (550, 150), 50, white)
-		Attaque_monstre()
 
 def quel_monstre():
 	global sleep
@@ -200,7 +200,6 @@ def quel_monstre():
 		else:
 			efface_texte()
 			texte("Vous avez gagnez", (700, 500), 100, green)
-	
 
 def Attaque_monstre():
 	global apres
@@ -212,14 +211,13 @@ def Attaque_monstre():
 			texte(f'Le monstre vous a attaqué de {attack_b}', (550, 50), 30, red)
 			personnage.vie -= attack_b
 			if apres == 1:
-				esquive = randint(0, (25 // personnage.esquive))
+				esquive = randint(0, (75 // personnage.esquive))
 				if esquive == 0:
 					personnage.vie += attack_b
 					efface_texte()
 					texte("Vous avez esquivez le coup", (600, 100), 30, green)
 					time.sleep(3.0)
 					apres = 0
-			time.sleep(3.0)
 			efface_texte()
 			#attaque_monstre2()
 	if action_boss == 1:
@@ -316,26 +314,23 @@ def health_bar(surface):
 
 		VieBoss()
 
-def la_boutique():
-	texte("BOUTIQUE", (800, 450), 100, red)
-	time.sleep(2.0)
-	efface_texte()
-	fenetre.blit(boutique, (300, 150))
-
 def ta_vie():
-	global essoufflement
+	global battements
 	if personnage.vie > 0:
 		texte(f"{personnage.vie}", (230, 746), 30, white)
 		if personnage.vie == personnage.maxVie:
 			texte(f"{personnage.vie}", (230, 746), 30, green)
 			pygame.mixer.stop()
+			fenetre.blit(gagné_vie2, (925, 700))
 
 		if personnage.vie <= 20:
 			texte(f"{personnage.vie}", (230, 746), 30, orange)
 			pygame.mixer.stop()
+			fenetre.blit(gagné_vie, (925, 700))
 		if personnage.vie <= 10:
 			texte(f"{personnage.vie}", (230, 746), 30, red)
-			essoufflement.play()
+			battements.play()
+			battements.play()
 
 	if personnage.vie <= 0:
 		texte("Mort !", (255, 746), 30, blue)
@@ -435,6 +430,18 @@ def VieBoss():
 	if monstre2.vie <= 50:
 		pygame.draw.rect(fenetre, red, bar_position2)
 
+def esquive_utiliser():
+	if apres == 1:
+		fenetre.blit(esquive1, (1100,700))
+	else:
+		fenetre.blit(bouton_esquive, (1100,700))
+
+def attaque_speciale_utiliser():
+	if attack_speciale > 0:
+		fenetre.blit(attaque_spéciale, (1275, 700))
+	else:
+		fenetre.blit(attaque_speciale2, (1275, 700))
+
 #________________________________________________________________________________________________________
 
 #Ouverture de la fenêtre Pygame
@@ -450,9 +457,6 @@ fond = pygame.transform.scale(fond, (1600, 900))
 	
 attaque = pygame.image.load("./gui/Boutons/Attaque.png")
 attaque = pygame.transform.scale(attaque, (150, 150))
-
-shop = pygame.image.load("./gui/Boutons/boutique.png").convert()
-shop = pygame.transform.scale(shop, (150, 150))
 	
 attaque_spéciale = pygame.image.load("./gui/Boutons/attaque spéciale.png")
 attaque_spéciale = pygame.transform.scale(attaque_spéciale, (150, 150))
@@ -501,6 +505,18 @@ premier_monstre = pygame.transform.scale(premier_monstre, (150, 43))
 deuxieme_monstre = pygame.image.load("./gui/Boutons/deuxieme_monstre.png")
 deuxieme_monstre = pygame.transform.scale(deuxieme_monstre, (150, 43))
 
+case = pygame.image.load("./gui/case.png")
+case = pygame.transform.scale(case, (150, 45))
+
+esquive1 = pygame.image.load("./gui/Boutons/esquive_utiliser.png")
+esquive1 = pygame.transform.scale(esquive1, (150, 150))
+
+gagné_vie2 = pygame.image.load("./gui/Boutons/vie_max.png")
+gagné_vie2 = pygame.transform.scale(gagné_vie2, (150, 150))
+
+attaque_speciale2 = pygame.image.load("./gui/Boutons/attaque_speciale_utiliser.png")
+attaque_speciale2 = pygame.transform.scale(attaque_speciale2, (150, 150))
+
 
 
 # Collages
@@ -510,8 +526,6 @@ fenetre.blit(monster_image, (0, 0))
 fenetre.blit(guerrier, (1450, 0))				# guerrier
 fenetre.blit(mage, (1300, 0))					# mage
 fenetre.blit(archer, (1150, 0))					# Archer
-
-
 
 
 #________________________________________________________________________________________________________ 
@@ -547,27 +561,35 @@ while continuer:
 		if event.type == KEYDOWN:
 			if event.key == K_s:
 				if personnage.argent >= 150:
-					texte("Vous avez acheter 2boules spéciales", (700, 100), 30, green)
+					texte("Vous avez acheter 2 boules spéciales", (700, 100), 30, green)
 					attack_speciale += 2
 					personnage.argent -= 150
+					time.sleep(3.0)
+					efface_texte()
 					
 			if event.key == K_a:
 				if personnage.argent >= 100:
 					texte("Vous avez acheter une épée", (700, 100), 30, green)
 					personnage.attaque += 10
 					personnage.argent -= 100
+					time.sleep(3.0)
+					efface_texte()
 
 			if event.key == K_e:
 				if personnage.argent >= 100:
 					texte("Vous avez acheter des ailes", (700, 100), 30, green)
 					personnage.esquive += 10
 					personnage.argent -= 100
+					time.sleep(3.0)
+					efface_texte()
 
 			if event.key == K_r:
 				if personnage.argent >= 100:
 					texte("Vous avez acheter une baguette", (700, 100), 30, green)
 					personnage.regeneration += 10
 					personnage.argent -= 100
+					time.sleep(3.0)
+					efface_texte()
 
 			if event.key == K_ASTERISK:
 				if personnage.argent >= 150:
@@ -575,7 +597,8 @@ while continuer:
 					personnage.maxVie += 10
 					personnage.vie = personnage.maxVie
 					personnage.argent -= 100
-
+					time.sleep(3.0)
+					efface_texte()
 
 		if event.type == QUIT:
 			continuer = 0
