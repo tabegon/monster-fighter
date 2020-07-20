@@ -1,13 +1,13 @@
 # Monster-fighter
 <div align = "center">
- :+1:|<a href="## C'est quoi monster-fighter ?"> C'EST QUOI </a>
- |<a href="### Pour commencer"> POUR COMMENCER </a>
- |<a href="### Commandes"> COMMANDES </a>
- |<a href="### Explications de choses incompréhensible"> INCOMPRÉHENSIBLE </a>
- |<a href="### À propos de l'interface graphique
+ :+1:|<a href="/#C'est quoi monster-fighter ?"> C'EST QUOI </a>
+ |<a href="/#Pour commencer"> POUR COMMENCER </a>
+ |<a href="/#Commandes"> COMMANDES </a>
+ |<a href="/#Explications de choses incompréhensible"> INCOMPRÉHENSIBLE </a>
+ |<a href="/#À propos de l'interface graphique
 "> À PROPOS</a>
- |<a href="### des touches permettant d'acheter"> TOUCHES POUR ACHETER </a>
- |<a href="### Des règles à venir"> À VENIR </a> | :+1:
+ |<a href="/#des touches permettant d'acheter"> TOUCHES POUR ACHETER </a>
+ |<a href="/#Des règles à venir"> À VENIR </a> | :+1:
  </div>
 
 ## C'est quoi monster-fighter ?
@@ -35,7 +35,7 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
 
     4. Ouvrez le jeu et jouez
 
-    5. Allez dans <b> <a href="### Commandes"> Commandes </a> </b>
+    5. Allez dans <b> <a href="#Commandes"> Commandes </a> </b>
 
 <br/>
 <div align = "right">
