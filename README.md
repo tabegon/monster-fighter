@@ -143,6 +143,14 @@ Voici des screenshots
 Sans le shop
 ![monster-fighter](./gui/monster_fighter.png)
 
+
+***
+```markdown
+# Bon alors ça vous plait. oui!... Ben alors qu'est ce que vous attendez c'est maintenant. 
+```
+___OK___
+![gif](https://media.giphy.com/media/PgKgO8Ep9XCEtGFmm9/giphy.gif)
+***
 ***
 ```markdown
 # Crée et développé par Théo Abegon et aider par Marc Abegon. Merci pour tous.
