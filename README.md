@@ -21,23 +21,23 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
 <br/>
 
 ### Pour commencer
-- Pour lancer le jeu voila ce qu'il faut faire :
+Pour lancer le jeu voila ce qu'il faut faire :
     
-    1. Installer __```python```__ 
+1. Installer __```python```__ 
 
-    2. Installer __```pygame```__
+2. Installer __```pygame```__
 
-    3. Deux choix:
-        1. Clonner le repesitory:
+3. Deux choix:
+    - Clonner le repesitory:
         ```bash
         $ git clone https://github.com/tabegon/monster-fighter.git
         ```
 
-        2. télécharger le zip
+    - télécharger le zip
 
-    4. Ouvrez le jeu et jouez
+4. Ouvrez le jeu et jouez
 
-    5. Allez dans <b> <a href="#Commandes"> Commandes </a> </b>
+5. Allez dans <b> <a href="#Commandes"> Commandes </a> </b>
 
 <br/>
 <div align = "right">
@@ -156,3 +156,10 @@ ___OK___
 # Crée et développé par Théo Abegon et aider par Marc Abegon. Merci pour tous.
 ```  
 ***
+___
+```diff
+- Regardez en bas c'est un conseil
+```
+ :point_down:  :point_down:  :point_down:
+1. [Notez nous sur ce formulaire](https://docs.google.com/forms/d/e/1FAIpQLSeynn5Diz35-ni2QIRkqyeO5MBpdLgHGxNeo8ZHCRT2e1bYnw/viewform)
+
