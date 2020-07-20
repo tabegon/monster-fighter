@@ -7,7 +7,8 @@
  |<a href="#à-propos-de-linterface-graphique
 "> À PROPOS</a>
  |<a href="#des-touches-permettant-dacheter"> TOUCHES POUR ACHETER </a>
- |<a href="#Des-règles-à-venir"> À VENIR </a> | :+1: :octocat:
+ |<a href="#Des-règles-à-venir"> À VENIR </a> 
+ |<a href="#screenshot"> SCREENSHOTS </a>| :+1: :octocat:
  </div>
 
 ## C'est quoi monster-fighter ?
@@ -21,7 +22,8 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
 
 ### Pour commencer
 - Pour lancer le jeu voila ce qu'il faut faire :
-    1. Installer __```python```__
+    
+    1. Installer __```python```__ 
 
     2. Installer __```pygame```__
 
@@ -73,15 +75,21 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
 ### À propos de l'interface graphique
 - Des choses à faire
     - Il y a encore beaucoup de bugs à réparer donc ne vous attendez pas as un jeu bien dévellopper:
-        - si vous touchez à un endroit ou il y a un métier ça mettra le nouveau métier
+        - [ ] si vous touchez à un endroit ou il y a un métier ça mettra le nouveau métier
+        - [ ] parfois le script ne marche pas
+        - [ ] tout le temps sur la musique ça fait un "bip"
+        - [ ] le texte de ton status s'enlève et se remet à chaque fois
     - On a aussi des choses à ajouter (très beaucoup) :
-        - Des mondes
-        - des fonds
-        - Jeu multijoueur (max 2)
-        - boss
-        - des alliés
-        - de nouvelles attaque
-        - et plein d'autres choses
+        - [X] boutique
+        - [X] barre de vies
+        - [ ] deux monstres
+        - [ ] Des mondes
+        - [ ] des fonds
+        - [ ] Jeu multijoueur (max 2)
+        - [ ] boss
+        - [ ] des alliés
+        - [ ] de nouvelles attaque
+        - [ ] et plein d'autres choses
 
 <br/>
 <div align = "right">
@@ -123,6 +131,11 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
 <br/>
 
 ### Screenshot
+<br/>
+<div align = "right">
+    <b> <a href="#Monster-fighter"> ↥ haut de page </a> </b>
+</div>
+<br/>
 
 Voici des screenshots
 
