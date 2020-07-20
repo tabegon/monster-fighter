@@ -1,10 +1,47 @@
 # Monster-fighter
+<div align = "center">
+ |<a href="## C'est quoi monster-fighter ?"> C'EST QUOI </a>
+ |<a href="### Pour commencer"> POUR COMMENCER </a>
+ |<a href="### Commandes"> COMMANDES </a>
+ |<a href="### Explications de choses incompréhensible"> INCOMPRÉHENSIBLE </a>
+ |<a href="### À propos de l'interface graphique
+">À PROPOS</a>
+ |<a href="### des touches permettant d'acheter"> TOUCHES POUR ACHETER </a>
+ |<a href="### Des règles à venir"> À VENIR </a>
+ </div>
 
 ## C'est quoi monster-fighter ?
 C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut que tu battes des monstres, en utilisant des objets achetés à la boutique, en attaquant tout simplement, en faisant une attaque spécial etc.
 
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
+
 ### Pour commencer
-Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
+- Pour lancer le jeu voila ce qu'il faut faire :
+    1. Installer __```python```__
+
+    2. Installer __```pygame```__
+
+    3. Deux choix:
+        1. Clonner le repesitory:
+        ```bash
+        $ git clone https://github.com/tabegon/monster-fighter.git
+        ```
+
+        2. télécharger le zip
+
+    4. Ouvrez le jeu et jouez
+
+    5. Allez dans <b> <a href="### Commandes"> Commandes </a> </b>
+
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
 
 ### Commandes
 - Je n'ai pas beaucoup de choses à dire à se sujet car dans le jeu les commandes y sont déjà :
@@ -16,8 +53,20 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
         - <kbd>r</kbd> = régénération
         - <kbd>*</kbd> = pomme d'or (+10 pour le maximum de vies)
 
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
+
 ### Explications de choses incompréhensible
 - Il y a rien d'incompréhensible vous devrai m'en faire remarquez des choses incompréhensible
+
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
 
 ## Gui
 
@@ -33,6 +82,13 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
         - des alliés
         - de nouvelles attaque
         - et plein d'autres choses
+
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
+
 ### des touches permettant d'acheter
 - <kbd>a</kbd> = attaque
 - <kbd>s</kbd> = attaque spéciale
@@ -40,13 +96,31 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 - <kbd>r</kbd> = régénération
 - <kbd>*</kbd> = pomme d'or (+10 pour le maximum de vies)
 
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
+
 ### Des choses à savoir
 - il faut être patient si vous ne voulez pas que quand vous avez peu de pv vous attaquez
+
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
 
 ### Des règles à venir
 - quand il y a deux monstres utiliser <kbd>1</kbd> pour attaquer le premier monstre ou <kbd>2</kbd> pour attaquer le duxième monstre. Et si vous appuyer sur le bouton <kbd>attaque</kbd> alors vous attaquerai automatiquement le premier monstre.
 
-- dans le duxieme monde appuyer sur <kbd>&uarr;</kbd> pour emprunter le chemin du haut, <kbd>&darr;</kbd> pour le chemin du haut, <kbd>&rarr;</kbd> pour le chemin de droite et <kbd>&larr;</kbd> pour le chemin de gauche
+- dans le duxieme monde appuyer sur <kbd>&uarr;</kbd> pour emprunter le chemin du haut, <kbd>&darr;</kbd> pour le chemin du haut, <kbd>&rarr;</kbd> pour le chemin de droite et <kbd>&larr;</kbd> pour le chemin de gauche.
+
+<br/>
+<div align = "right">
+    <b> <a href="#----"> ↥ haut de page </a> </b>
+</div>
+<br/>
 
 ***
 ```markdown
