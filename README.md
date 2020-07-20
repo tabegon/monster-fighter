@@ -3,7 +3,7 @@
  :octocat: :+1:|<a href="#cest-quoi-monster-fighter-"> C'EST QUOI </a>
  |<a href="#Pour-commencer"> POUR COMMENCER </a>
  |<a href="#Commandes"> COMMANDES </a>
- |<a href="#Explications-de-choses-incompréhensible"> INCOMPRÉHENSIBLE </a>
+ |<a href="#Explications-de-choses-incompréhensible"> INCOMPREHENSIBLE </a>
  |<a href="#à-propos-de-linterface-graphique
 "> À PROPOS</a>
  |<a href="#des-touches-permettant-dacheter"> TOUCHES POUR ACHETER </a>
@@ -121,6 +121,14 @@ C'est un jeu où tu combats des monstres. Pour monter d'étage en étage il faut
     <b> <a href="#Monster-fighter"> ↥ haut de page </a> </b>
 </div>
 <br/>
+
+### Screenshot
+
+Voici des screenshots
+
+
+Sans le shop
+![monster-fighter](./gui/monster_fighter.png)
 
 ***
 ```markdown
