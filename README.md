@@ -1,13 +1,13 @@
 # Monster-fighter
 <div align = "center">
- :+1:|<a href="/#Cest-quoi-monster-fighter ?"> C'EST QUOI </a>
+ :octocat: :+1:|<a href="/#cest-quoi-monster-fighter-"> C'EST QUOI </a>
  |<a href="#Pour-commencer"> POUR COMMENCER </a>
  |<a href="#Commandes"> COMMANDES </a>
  |<a href="#Explications-de-choses-incompréhensible"> INCOMPRÉHENSIBLE </a>
  |<a href="#à-propos-de-linterface-graphique
 "> À PROPOS</a>
  |<a href="#des-touches-permettant-dacheter"> TOUCHES POUR ACHETER </a>
- |<a href="#Des-règles-à-venir"> À VENIR </a> | :+1:
+ |<a href="#Des-règles-à-venir"> À VENIR </a> | :+1: :octocat:
  </div>
 
 ## C'est quoi monster-fighter ?
