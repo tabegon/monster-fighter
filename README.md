@@ -43,6 +43,11 @@ Pour lancer le jeu il faut faire >python Attaque_de_monstre.py
 ### Des choses à savoir
 - il faut être patient si vous ne voulez pas que quand vous avez peu de pv vous attaquez
 
+### Des règles à venir
+- quand il y a deux monstres utiliser <kbd>1</kbd> pour attaquer le premier monstre ou <kbd>2</kbd> pour attaquer le duxième monstre. Et si vous appuyer sur le bouton <kbd>attaque</kbd> alors vous attaquerai automatiquement le premier monstre.
+
+- dans le duxieme monde appuyer sur <kbd>&uarr;</kbd> pour emprunter le chemin du haut, <kbd>&darr;</kbd> pour le chemin du haut, <kbd>&rarr;</kbd> pour le chemin de droite et <kbd>&larr;</kbd> pour le chemin de gauche
+
 ***
 ```markdown
 # Crée et développé par Théo Abegon et aider par Marc Abegon. Merci pour tous.
