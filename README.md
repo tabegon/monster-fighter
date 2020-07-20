@@ -1,6 +1,6 @@
 # Monster-fighter
 <div align = "center">
- :octocat: :+1:|<a href="/#cest-quoi-monster-fighter-"> C'EST QUOI </a>
+ :octocat: :+1:|<a href="#cest-quoi-monster-fighter-"> C'EST QUOI </a>
  |<a href="#Pour-commencer"> POUR COMMENCER </a>
  |<a href="#Commandes"> COMMANDES </a>
  |<a href="#Explications-de-choses-incompréhensible"> INCOMPRÉHENSIBLE </a>
