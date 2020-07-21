@@ -115,39 +115,11 @@ def Choix_boutons():
 			efface_texte()
 			Attaque_monstre()
 		else:
-			efface_texte()
-			texte("Vous avez gagnez", (700, 500), 100, green)
-	
-	if deuxieme_monstre == 1:
-		for event in pygame.event.get():
-			if event.type == KEYDOWN:
-				if event.key == K_1 :
-					attack = randint(0, personnage.attaque)
-					coup_critique = randint(0, 1)
-					son.play()
-					if coup_critique == 1:
-						attack += 20
-						sleep += 4.0
-						texte("Vous avez donner un coup critique", (700, 50), 30, yellow)
-					texte(f'Vous avez attaquer de {attack}', (700, 100), 30, blue)
-				if event.key == K_2:
-					attack = randint(0, personnage.attaque)
-					coup_critique = randint(0, 1)
-					son.play()
-					if coup_critique == 1:
-						attack += 20
-						sleep += 4.0
-						texte("Vous avez donner un coup critique", (700, 50), 30, yellow)
-					texte(f'Vous avez attaquer de {attack}', (700, 100), 30, blue)
-					monstre2.vie -= attack
-		if monstre.vie > 0:
-			time.sleep(3.0)
-			sleep = 4
-			efface_texte()
-			Attaque_monstre()
-		else:
-			efface_texte()
-			texte("Vous avez gagnez", (700, 500), 100, green)	
+			fin_de_vie()
+			if monstre2.vie > 0:
+				attaque_monstre2()
+			else:
+				fin_de_vie()
 		
 
 	if gagné_vie.get_rect(x = 925, y = 700).collidepoint(x, y):
@@ -221,6 +193,8 @@ def Attaque_monstre():
 					apres = 0
 			time.sleep(3.0)
 			efface_texte()
+			if deuxieme_monstre == 1:
+				attaque_monstre2()
 	if action_boss == 1:
 		vies_b = randint(0, monstre.regeneration)
 		efface_texte()
@@ -231,46 +205,57 @@ def Attaque_monstre():
 		if monstre.vie > monstre.MaxVie:
 			monstre.vie = monstre.MaxVie
 		efface_texte()
-	if deuxieme_monstre == 1:
-		attaque_monstre2()
+		if deuxieme_monstre == 1:
+			attaque_monstre2()
 
 def fin_de_vie():
-	global tour, monstre, deuxieme_monstre
-	if monstre.vie <= 0:
-		monstre.vie = 0
-		efface_texte()
-		monstre.vie = monstre.MaxVie
-		personnage.vie = personnage.maxVie
-		tour += 1
-		texte(f"Vous êtes maintenant à l'étage n°{tour}", (700, 50), 50, yellow)
-		monstre = Monster()
-		time.sleep(3.0)
-		efface_texte()
-		texte("avant random", (500, 100), 30, blue)
-
-		deuxieme_monstre = randint(1, 1)
-		if deuxieme_monstre == 1:
-			deux_monstre()
-			texte("dans random", (500, 300), 30, blue)
-		argent = randint(0, 1)
-		if argent == 0:
-			argent_gagne = randint(0, 50)
-			texte(f"Le monstre à relaché {argent_gagne} pieces d'or en mourant", (700, 100), 30, green)
+	global tour, monstre, deuxieme_monstre, monstre2
+	if deuxieme_monstre != 1:
+		if monstre.vie <= 0:
+			monstre.vie = 0
+			efface_texte()
+			monstre.vie = monstre.MaxVie
+			personnage.vie = personnage.maxVie
+			tour += 1
+			texte(f"Vous êtes maintenant à l'étage n°{tour}", (700, 50), 50, yellow)
+			monstre = Monster()
 			time.sleep(3.0)
 			efface_texte()
-			personnage.argent += argent_gagne
-		coffre = randint(0, 1)
-		if coffre == 0:
-			ta_le_coffre()
-		monstre2.vie = 0
-		monstre2.vie = monstre2.MaxVie
+			deuxieme_monstre = randint(0, 3)
+			if deuxieme_monstre == 1:
+				deux_monstre()
+				monstre2 = Monster()
+
+	if deuxieme_monstre == 1:
+		if monstre.vie <= 0:
+			monstre.vie = 0
+
+		if monstre2.vie <= 0:
+			monstre2.vie = 0
+		
+		if monstre.vie and monstre2.vie <= 0:
+			efface_texte()
+			monstre.vie = monstre.MaxVie
+			monstre2.vie = monstre2.MaxVie
+			personnage.vie = personnage.maxVie
+			tour += 1
+			texte(f"Vous êtes maintenant à l'étage n°{tour}", (700, 50), 50, yellow)
+			monstre = Monster()
+			monstre2 = Monster()
+			time.sleep(3.0)
+			efface_texte()
 
 
-	if monstre2.vie <= 0:
-		efface_texte()
-		monstre2.vie = 0
-		monstre2.vie = monstre2.MaxVie
-
+			argent = randint(0, 1)
+			if argent == 0:
+				argent_gagne = randint(0, 50)
+				texte(f"Le monstre à relaché {argent_gagne} pieces d'or en mourant", (700, 100), 30, green)
+				time.sleep(3.0)
+				efface_texte()
+				personnage.argent += argent_gagne
+			coffre = randint(0, 1)
+			if coffre == 0:
+				ta_le_coffre()
 
 	if personnage.vie <= 0:
 		efface_texte()
@@ -401,8 +386,7 @@ def attaque_monstre2():
 			efface_texte()
 			texte(f'Le 2eme monstre à regagné {vies_b} de vies', (550, 50), 30, white)
 			monstre2.vie += vies_b
-			if monstre2.vie < monstre2.MaxVie:
-				time.sleep(3.0)
+			time.sleep(3.0)
 			if monstre2.vie > monstre2.MaxVie:
 				monstre2.vie = monstre2.MaxVie
 
@@ -647,6 +631,30 @@ while continuer:
 						personnage.argent -= 100
 						time.sleep(3.0)
 						efface_texte()
+
+				if deuxieme_monstre == 1:
+					if event.key == K_SPACE:
+						attack = randint(0, personnage.attaque)
+						coup_critique = randint(0, 1)
+						son.play()
+						if coup_critique == 1:
+							attack += 20
+							sleep += 4.0
+							texte("Vous avez donner un coup critique", (700, 50), 30, yellow)
+						texte(f'Vous avez attaquer de {attack}', (700, 100), 30, blue)
+						monstre2.vie -= attack
+						time.sleep(3.0)
+						efface_texte()
+						if monstre2.vie > 0:
+							time.sleep(3.0)
+							efface_texte()
+							attaque_monstre2()
+						else:
+							fin_de_vie()
+							if monstre.vie > 0:
+								Attaque_monstre()
+							else:
+								fin_de_vie()
 
 			if event.type == QUIT:
 				continuer = 0

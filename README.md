@@ -54,6 +54,7 @@ Pour lancer le jeu voila ce qu'il faut faire :
         - <kbd>e</kbd> = esquive
         - <kbd>r</kbd> = régénération
         - <kbd>*</kbd> = pomme d'or (+10 pour le maximum de vies)
+    - quand il y a deux monstres utiliser le bouton de d'habitude (<kbd>attaque</kbd>) pour attaquer le premier monstre ou <kbd>espace</kbd> pour attaquer le duxième monstre
 
 <br/>
 <div align = "right">
@@ -82,15 +83,16 @@ Pour lancer le jeu voila ce qu'il faut faire :
     - On a aussi des choses à ajouter (très beaucoup) :
         - [X] boutique
         - [X] barre de vies
-        - [ ] deux monstres
+        - [X] deux monstres
+        - [ ] Langues
         - [ ] Des mondes
         - [ ] des fonds
         - [ ] Jeu multijoueur (max 2)
         - [ ] boss
         - [ ] des alliés
         - [ ] de nouvelles attaque
-        - [ ] et plein d'autres choses
-
+        - [ ] position
+        - [ ] choix entre gui et normal
 <br/>
 <div align = "right">
     <b> <a href="#Monster-fighter"> ↥ haut de page </a> </b>
@@ -120,8 +122,6 @@ Pour lancer le jeu voila ce qu'il faut faire :
 <br/>
 
 ### Des règles à venir
-- quand il y a deux monstres utiliser <kbd>1</kbd> pour attaquer le premier monstre ou <kbd>2</kbd> pour attaquer le duxième monstre. Et si vous appuyer sur le bouton <kbd>attaque</kbd> alors vous attaquerai automatiquement le premier monstre.
-
 - dans le duxieme monde appuyer sur <kbd>&uarr;</kbd> pour emprunter le chemin du haut, <kbd>&darr;</kbd> pour le chemin du haut, <kbd>&rarr;</kbd> pour le chemin de droite et <kbd>&larr;</kbd> pour le chemin de gauche.
 
 <br/>
@@ -143,7 +143,7 @@ Voici des screenshots
 Sans le shop
 ![monster-fighter](./gui/monster_fighter.png)
 
-
+## Au revoir
 ***
 ```markdown
 # Bon alors ça vous plait. oui!... Ben alors qu'est ce que vous attendez c'est maintenant. 
@@ -160,6 +160,8 @@ ___
 ```diff
 - Regardez en bas c'est un conseil
 ```
- :point_down:  :point_down:  :point_down:
-1. [Notez nous sur ce formulaire](https://docs.google.com/forms/d/e/1FAIpQLSeynn5Diz35-ni2QIRkqyeO5MBpdLgHGxNeo8ZHCRT2e1bYnw/viewform)
+<div align = "center">
+:point_down:  :point_down:  :point_down: :point_down: :point_down:
+</div>
 
+1. [Notez nous sur ce formulaire](https://docs.google.com/forms/d/e/1FAIpQLSeynn5Diz35-ni2QIRkqyeO5MBpdLgHGxNeo8ZHCRT2e1bYnw/viewform)
